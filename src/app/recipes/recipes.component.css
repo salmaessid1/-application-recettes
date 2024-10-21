@@ -1,0 +1,276 @@
+/* src/app/recipes/recipes.component.css */
+
+/* Réinitialisation de base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb); /* Dégradé de fond doux */
+  font-family: 'Arial', sans-serif;
+  color: #212529; /* Couleur du texte principal */
+}
+
+/* Conteneur principal */
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 30px;
+  background: white; /* Couleur de fond blanche */
+  border-radius: 20px; /* Coins arrondis accentués */
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1); /* Ombre plus douce */
+  transition: transform 0.3s, box-shadow 0.3s; /* Transition pour les effets */
+}
+
+.container:hover {
+  transform: translateY(-5px); /* Légère montée au survol */
+  box-shadow: 0 15px 60px rgba(0, 0, 0, 0.3); /* Ombre plus marquée */
+}
+
+/* Titre de l'application */
+h2 {
+  text-align: center;
+  font-size: 3em; /* Taille du texte augmentée */
+  margin-bottom: 30px;
+  color: #2e7d32; /* Couleur verte vive */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Ombre de texte douce */
+}
+
+/* Champ de recherche */
+.search-input {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 30px;
+  border: 2px solid #2e7d32; /* Bordure verte */
+  border-radius: 15px; /* Coins arrondis */
+  font-size: 1.1em; /* Taille de police augmentée */
+  transition: border-color 0.3s, box-shadow 0.3s; /* Transition pour la bordure */
+}
+
+.search-input:focus {
+  border-color: #1b5e20; /* Bordure plus foncée au focus */
+  box-shadow: 0 0 8px rgba(46, 125, 50, 0.5); /* Ombre au focus */
+  outline: none; /* Retirer le contour par défaut */
+}
+
+/* Formulaire de recette */
+.recipe-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.form-input, .form-textarea {
+  margin: 10px 0;
+  padding: 12px;
+  border: 2px solid #ddd; /* Bordure grise */
+  border-radius: 15px; /* Coins arrondis */
+  font-size: 1em;
+  transition: border-color 0.3s; /* Transition pour la bordure */
+}
+
+.form-input:focus, .form-textarea:focus {
+  border-color: #2e7d32; /* Changer la couleur de la bordure au focus */
+  outline: none; /* Retirer le contour par défaut */
+}
+
+/* Boutons */
+.btn-submit {
+  background-color: #2e7d32; /* Couleur de fond verte */
+  color: white;
+  padding: 15px; /* Espacement intérieur */
+  border: none; /* Pas de bordure */
+  border-radius: 15px; /* Coins arrondis */
+  cursor: pointer; /* Curseur pointer */
+  font-size: 1.1em; /* Taille de police */
+  transition: background-color 0.3s, transform 0.3s; /* Transition pour le fond */
+}
+
+.btn-submit:hover {
+  background-color: #1b5e20; /* Couleur au survol */
+  transform: translateY(-3px); /* Légère montée au survol */
+}
+
+/* Liste des recettes */
+.recipe-list {
+  list-style: none;
+  padding: 0;
+}
+
+.recipe-item {
+  background: #f9f9f9; /* Couleur de fond douce */
+  border-radius: 15px; /* Coins arrondis */
+  padding: 20px; /* Espacement intérieur */
+  margin: 15px 0;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); /* Ombre douce */
+  transition: transform 0.2s; /* Transition pour l'effet */
+}
+
+.recipe-item:hover {
+  transform: translateY(-4px); /* Légère montée au survol */
+}
+
+/* Image de la recette */
+.recipe-image {
+  max-width: 100%; /* Largeur maximale */
+  height: auto; /* Hauteur automatique */
+  border-radius: 15px; /* Coins arrondis */
+}
+
+/* Titre de la recette */
+.recipe-title {
+  color: #212529; /* Couleur du texte */
+  font-size: 1.8em; /* Taille du texte */
+  margin: 10px 0; /* Marge autour du titre */
+}
+
+/* Évaluation */
+.rating {
+  margin: 10px 0; /* Marge autour */
+  color: #000000;
+  font-size: 1em;}
+.rating span {
+  font-size: 1.5em; /* Taille des étoiles */
+}
+
+/* Boutons d'action pour les recettes */
+.btn-edit, .btn-delete, .btn-favorite {
+  margin-right: 5px; /* Marge droite */
+  padding: 10px 15px; /* Espacement intérieur */
+  border: none; /* Pas de bordure */
+  border-radius: 10px; /* Coins arrondis */
+  cursor: pointer; /* Curseur pointer */
+  font-size: 0.9em; /* Taille de police */
+  transition: background-color 0.3s, transform 0.2s; /* Transition pour le fond */
+}
+
+.btn-edit {
+  background-color: #007bff; /* Couleur bleue */
+  color: white; /* Couleur du texte */
+}
+
+.btn-edit:hover {
+  background-color: #0056b3; /* Couleur au survol */
+  transform: translateY(-2px); /* Légère montée au survol */
+}
+
+.btn-delete {
+  background-color: #dc3545; /* Couleur rouge */
+  color: white; /* Couleur du texte */
+}
+
+.btn-delete:hover {
+  background-color: #c82333; /* Couleur au survol */
+  transform: translateY(-2px); /* Légère montée au survol */
+}
+
+.btn-favorite {
+  background-color: #ffc107; /* Couleur jaune */
+  color: white; /* Couleur du texte */
+}
+
+.btn-favorite.favorited {
+  background-color: #ff851b; /* Couleur orange lorsque favori */
+}
+
+.btn-favorite:hover {
+  background-color: #e0a800; /* Couleur au survol */
+  transform: translateY(-2px); /* Légère montée au survol */
+}
+
+/* Section des commentaires */
+.comments-section {
+  margin-top: 30px; /* Marge supérieure */
+  border-top: 1px solid #eee; /* Bordure supérieure */
+  padding-top: 15px; /* Espacement supérieur */
+}
+
+.comments-section h4 {
+  color: #2e7d32; /* Couleur verte */
+  margin-bottom: 10px; /* Marge inférieure */
+}
+
+/* Pagination */
+.pagination {
+  display: flex; /* Flexbox pour le layout */
+  justify-content: center; /* Centrage horizontal */
+  margin: 30px 0; /* Marge verticale */
+}
+
+.pagination button {
+  padding: 10px 15px; /* Espacement intérieur */
+  margin: 0 5px; /* Marge autour */
+  border: none; /* Pas de bordure */
+  border-radius: 15px; /* Coins arrondis */
+  cursor: pointer; /* Curseur pointer */
+  background: #f0f0f0; /* Couleur de fond */
+  transition: background-color 0.3s; /* Transition pour le fond */
+}
+
+.pagination button:hover {
+  background-color: #e7e7e7; /* Couleur au survol */
+}
+
+/* Messages d'erreur et de succès */
+.error-message {
+  color: red; /* Couleur rouge pour les erreurs */
+  text-align: center; /* Centrage du texte */
+  margin: 10px 0; /* Marge autour */
+}
+
+.success-message {
+  color: green; /* Couleur verte pour les succès */
+  text-align: center; /* Centrage du texte */
+  margin: 10px 0; /* Marge autour */
+}
+
+/* Effets de transition */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.container {
+  animation: fadeIn 0.5s; /* Animation d'apparition */
+}
+
+/* Style pour la section d'informations nutritionnelles */
+.nutrition-info {
+  background-color: #e9ecef; /* Couleur de fond pour la section */
+  padding: 15px; /* Espacement intérieur */
+  border-radius: 15px; /* Coins arrondis */
+  margin-top: 20px; /* Marge supérieure */
+}
+
+.nutrition-info h4 {
+  color: #2e7d32; /* Couleur verte */
+  margin-bottom: 10px; /* Marge inférieure */
+}
+
+
+/* src/app/recipes/recipes.component.css */
+/* src/app/recipes/recipes.component.css */
+.star {
+  font-size: 24px; /* Ajustez la taille selon vos préférences */
+  color: #ccc; /* Couleur normale des étoiles (gris) */
+  cursor: pointer; /* Curseur de main pour l'interaction */
+  transition: color 0.2s, background-color 0.2s; /* Transition douce */
+  padding: 5px; /* Ajoute un peu d'espace autour de l'étoile */
+  border-radius: 4px; /* Pour arrondir les coins */
+}
+
+.star.filled {
+  color: gold; /* Couleur des étoiles remplies (gris) */
+}
+
+.star.selected {
+  background-color: gold; /* Couleur de fond dorée pour les étoiles sélectionnées */
+  color: white; /* Couleur des étoiles sélectionnées (blanc) */
+}
+

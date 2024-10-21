@@ -1,0 +1,98 @@
+<!-- src/app/recipes/recipes.component.html -->
+<div class="container">
+  <h2>Application de Recettes</h2>
+  
+  <input 
+    type="text" 
+    [(ngModel)]="searchTerm" 
+    placeholder="Rechercher des recettes..." 
+    class="search-input" 
+  />
+
+  <form (ngSubmit)="addOrUpdateRecipe()" class="recipe-form">
+    <input 
+      type="text" 
+      [(ngModel)]="title" 
+      name="title" 
+      placeholder="Titre de la recette" 
+      required 
+      class="form-input" 
+    />
+    <input 
+      type="text" 
+      [(ngModel)]="ingredients" 
+      name="ingredients" 
+      placeholder="Ingrédients (séparés par des virgules)" 
+      required 
+      class="form-input" 
+    />
+    <textarea 
+      [(ngModel)]="instructions" 
+      name="instructions" 
+      placeholder="Instructions" 
+      required 
+      class="form-textarea" 
+    ></textarea>
+    <input 
+      type="text" 
+      [(ngModel)]="imageUrl" 
+      name="imageUrl" 
+      placeholder="URL de l'image" 
+      required 
+      class="form-input" 
+    />
+    <input 
+      type="text" 
+      [(ngModel)]="category" 
+      name="category" 
+      placeholder="Catégorie" 
+      required 
+      class="form-input" 
+    />
+    <button type="submit" class="btn-submit">Ajouter / Mettre à jour Recette</button>
+    <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+    <div class="success-message" *ngIf="successMessage">{{ successMessage }}</div>
+  </form>
+
+  <ul class="recipe-list">
+    <li *ngFor="let recipe of paginatedRecipes" class="recipe-item">
+      <img [src]="recipe.imageUrl" alt="{{ recipe.title }}" class="recipe-image" />
+      <h3 class="recipe-title">{{ recipe.title }}</h3>
+      <p ><strong>Ingrédients:</strong> {{ recipe.ingredients.join(', ') }}</p>
+      <p><strong>Instructions:</strong> {{ recipe.instructions }}</p>
+      <p><strong>Catégorie:</strong> {{ recipe.category }}</p>
+     <div class="rating">
+  <span>Évaluation: {{ recipe.rating | number: '1.0-1' }}</span>
+  <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
+    <span 
+      class="star" 
+      [class.filled]="star <= recipe.rating" 
+      (click)="rateRecipe(recipe, star)"
+      title="Évaluer {{ star }} étoiles"
+    >★</span>
+  </ng-container>
+</div>
+
+      <button class="btn-favorite" 
+              [class.favorited]="recipe.isFavorite" 
+              (click)="toggleFavorite(recipe)">
+        {{ recipe.isFavorite ? 'Retirer des Favoris' : 'Ajouter aux Favoris' }}
+      </button>
+      <button class="btn-edit" (click)="editRecipe(recipe)">Modifier</button>
+      <button class="btn-delete" (click)="deleteRecipe(recipe.id)">Supprimer</button>
+
+      <div class="comments-section">
+        <h4>Commentaires</h4>
+        <div *ngFor="let comment of recipe.comments">{{ comment }}</div>
+        <input [(ngModel)]="newComment" placeholder="Ajouter un commentaire" class="form-input" />
+        <button (click)="addComment(recipe)" class="btn-submit">Ajouter Commentaire</button>
+      </div>
+    </li>
+  </ul>
+
+  <div class="pagination">
+    <button (click)="changePage(page - 1)" [disabled]="page === 1">Précédent</button>
+    <span>Page {{ page }}</span>
+    <button (click)="changePage(page + 1)" [disabled]="paginatedRecipes.length < pageSize">Suivant</button>
+  </div>
+</div>
